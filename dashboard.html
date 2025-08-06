@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - SPA VETERINARIO</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h1>SPA VETERINARIO</h1>
+            </div>
+            
+            <div class="user-section">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <span id="userInitial">U</span>
+                    </div>
+                    <div class="user-details">
+                        <span id="userName">Usuario</span>
+                        <span id="userRole" class="user-role">Rol</span>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn-ghost">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-calendar"></i>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-item" data-section="appointments">
+                    <i class="fas fa-clock"></i>
+                    <span>Citas</span>
+                </button>
+                <button class="nav-item client-only" data-section="pets">
+                    <i class="fas fa-paw"></i>
+                    <span>Mis Mascotas</span>
+                </button>
+                <button class="nav-item" data-section="payments">
+                    <i class="fas fa-credit-card"></i>
+                    <span id="paymentsLabel">Pagos</span>
+                </button>
+                <button class="nav-item" data-section="medical">
+                    <i class="fas fa-file-medical"></i>
+                    <span id="medicalLabel">Historial Clínico</span>
+                </button>
+                <button class="nav-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    <span>Perfil</span>
+                </button>
+                <button class="nav-item admin-only" data-section="users">
+                    <i class="fas fa-users"></i>
+                    <span>Usuarios</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <div class="section-header">
+                    <h2 id="welcomeMessage">Bienvenido</h2>
+                    <p id="welcomeDescription">Panel principal del sistema</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label" id="stat1Label">Estadística 1</p>
+                                <p class="stat-value" id="stat1Value">0</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i id="stat1Icon" class="fas fa-calendar"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label" id="stat2Label">Estadística 2</p>
+                                <p class="stat-value" id="stat2Value">0</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i id="stat2Icon" class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label" id="stat3Label">Estadística 3</p>
+                                <p class="stat-value" id="stat3Value">0</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i id="stat3Icon" class="fas fa-paw"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> Próximas Citas</h3>
+                        </div>
+                        <div class="card-content" id="upcomingAppointments">
+                            <!-- Contenido dinámico -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-bell"></i> Notificaciones</h3>
+                        </div>
+                        <div class="card-content" id="notifications">
+                            <!-- Contenido dinámico -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Appointments Section -->
+            <section id="appointments-section" class="content-section">
+                <div class="section-header">
+                    <h2>Sistema de Citas</h2>
+                    <button id="newAppointmentBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Nueva Cita
+                    </button>
+                </div>
+                <div id="appointmentsList" class="appointments-list">
+                    <!-- Contenido dinámico -->
+                </div>
+            </section>
+
+            <!-- Pets Section -->
+            <section id="pets-section" class="content-section">
+                <div class="section-header">
+                    <h2>Mis Mascotas</h2>
+                    <button id="newPetBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Registrar Mascota
+                    </button>
+                </div>
+                <div id="petsList" class="pets-grid">
+                    <!-- Contenido dinámico -->
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section id="payments-section" class="content-section">
+                <div class="section-header">
+                    <h2 id="paymentsTitle">Gestión de Pagos</h2>
+                    <p id="paymentsDescription">Administra los pagos del sistema</p>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Total</p>
+                                <p class="stat-value" id="totalAmount">$0.00</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Pagado</p>
+                                <p class="stat-value paid" id="paidAmount">$0.00</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Pendiente</p>
+                                <p class="stat-value pending" id="pendingAmount">$0.00</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-content">
+                            <div class="stat-info">
+                                <p class="stat-label">Vencido</p>
+                                <p class="stat-value overdue" id="overdueAmount">$0.00</p>
+                            </div>
+                            <div class="stat-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="paymentsList" class="payments-list">
+                    <!-- Contenido dinámico -->
+                </div>
+            </section>
+
+            <!-- Medical Records Section -->
+            <section id="medical-section" class="content-section">
+                <div class="section-header">
+                    <h2 id="medicalTitle">Registros Médicos</h2>
+                    <button id="newMedicalBtn" class="btn-primary doctor-only">
+                        <i class="fas fa-plus"></i> Nuevo Registro
+                    </button>
+                </div>
+                <div id="medicalList" class="medical-list">
+                    <!-- Contenido dinámico -->
+                </div>
+            </section>
+
+            <!-- Profile Section -->
+            <section id="profile-section" class="content-section">
+                <div class="section-header">
+                    <h2>Mi Perfil</h2>
+                    <button id="editProfileBtn" class="btn-primary">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </button>
+                </div>
+                <div class="profile-content">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <span id="profileInitial">U</span>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">Nombre Usuario</h3>
+                            <span id="profileRole" class="profile-role">Rol</span>
+                            <div class="profile-details">
+                                <p><i class="fas fa-envelope"></i> <span id="profileEmail">email@test.com</span></p>
+                                <p><i class="fas fa-phone"></i> <span id="profilePhone">+1234567890</span></p>
+                                <p><i class="fas fa-map-marker-alt"></i> <span id="profileAddress">Dirección</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Users Section -->
+            <section id="users-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gestión de Usuarios</h2>
+                    <button id="newUserBtn" class="btn-primary">
+                        <i class="fas fa-plus"></i> Nuevo Usuario
+                    </button>
+                </div>
+                <div id="usersList" class="users-list">
+                    <!-- Contenido dinámico -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nueva Cita</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="appointmentForm" class="modal-form">
+                <div class="form-group">
+                    <label for="petSelect">Mascota</label>
+                    <select id="petSelect" name="mascota_id" required>
+                        <option value="">Selecciona una mascota</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doctorSelect">Doctor</label>
+                    <select id="doctorSelect" name="doctor_id" required>
+                        <option value="">Selecciona un doctor</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="appointmentDate">Fecha</label>
+                        <input type="date" id="appointmentDate" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointmentTime">Hora</label>
+                        <input type="time" id="appointmentTime" name="hora" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="serviceSelect">Servicio</label>
+                    <select id="serviceSelect" name="servicio" required>
+                        <option value="">Tipo de consulta</option>
+                        <option value="Consulta General">Consulta General</option>
+                        <option value="Vacunación">Vacunación</option>
+                        <option value="Cirugía">Cirugía</option>
+                        <option value="Emergencia">Emergencia</option>
+                        <option value="Control">Control</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentNotes">Notas (Opcional)</label>
+                    <textarea id="appointmentNotes" name="notas" rows="3" placeholder="Información adicional..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary modal-cancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Agendar Cita</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Procesar Pago</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="paymentForm" class="modal-form">
+                <div class="payment-info">
+                    <p>Monto a pagar: <strong id="paymentAmount">$0.00</strong></p>
+                    <p>Servicio: <span id="paymentService">-</span></p>
+                </div>
+                <div class="form-group">
+                    <label for="cardNumber">Número de Tarjeta</label>
+                    <input type="text" id="cardNumber" name="numero_tarjeta" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">Nombre en la Tarjeta</label>
+                    <input type="text" id="cardName" name="nombre_tarjeta" placeholder="Juan Pérez" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="expiryDate">Fecha de Vencimiento</label>
+                        <input type="text" id="expiryDate" name="fecha_vencimiento" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV</label>
+                        <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary modal-cancel">Cancelar</button>
+                    <button type="submit" class="btn-primary">Procesar Pago</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
