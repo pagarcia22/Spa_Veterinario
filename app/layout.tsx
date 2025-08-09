@@ -5,8 +5,6 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Spa Veterinario',
-  description: 'Created with Paola',
-  generator: 'Paola garcia',
 }
 
 export default function RootLayout({
