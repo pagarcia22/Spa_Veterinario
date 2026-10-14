@@ -1,100 +1,37 @@
+# Spa Veterinario (demo)
 
+Prototipo de interfaz web para gestionar una clínica veterinaria y spa de mascotas, hecho con Next.js, React y TypeScript. Este repositorio contiene el **frontend**; no incluye backend ni base de datos.
 
-# 🐾 Spa Veterinario
+## Módulos de la interfaz
 
-## 📄 Descripción
+- **Mascotas:** registro y administración de las mascotas de un cliente.
+- **Citas:** solicitud y gestión de citas médicas o de spa.
+- **Historial médico:** consulta de diagnósticos, tratamientos y vacunas.
+- **Pagos:** pantalla del proceso de pago.
+- **Perfil de usuario.**
+- **Panel (dashboard)** con acceso por rol (cliente, doctor y administrador).
 
-Sistema web tipo SPA para gestión de servicios veterinarios y de spa. Permite interacción entre **tres roles de usuario**:
+## Tecnologías
 
-* **Cliente:** administra sus mascotas, solicita citas médicas o de spa, genera proformas y consulta historial clínico.
-* **Doctor (Veterinario):** registra diagnósticos, tratamientos, controla vacunas, utiliza un módulo de vademécum (medicamentos por síntoma/especie).
-* **Administrador:** gestiona usuarios, servicios, productos, inventario, compras, facturación, promociones y reportes.
----
+Next.js · React · TypeScript · Tailwind CSS · shadcn/ui · JavaScript
 
-## 📦 Tecnologías
+## Instalación
 
-* **Frontend:** JavaScript (framework tipo React/Vue/Angular o vanilla JS SPA)
-* **Backend:** PHP o Node.js (por ejemplo), con base de datos MySQL
-* **Autenticación y roles:** sistemas de login/registro con control por rol
-* **Interfaz responsive** y funcionalidades 24/7 para clientes 
----
+```bash
+git clone https://github.com/pagarcia22/Spa_Veterinario.git
+cd Spa_Veterinario
+pnpm install      # o: npm install
+pnpm dev          # o: npm run dev
+```
 
-## 🧩 Módulos y funcionalidades
+Abre `http://localhost:3000`.
 
-### Seguridad y usuarios
+## Estado del proyecto
 
-* Registro / login
-* Roles: cliente, doctor, administrador
-* Asignación de permisos según rol
+Prototipo de práctica. El control de roles del inicio de sesión es solo de demostración y no es seguro para producción.
 
-### Cliente
+## Próximos pasos
 
-* Registro y edición de datos personales
-* Registro de mascotas (varias por cliente)
-* Solicitud y cancelación de citas para spa o veterinaria
-* Visualización de historial clínico y vacunas
-* Generación de proformas de servicios o productos
-
-### Doctor (Veterinario)
-
-* Acceso al historial clínico de las mascotas
-* Registro de diagnósticos y tratamientos
-* Control de vacunas por paciente
-* Uso del módulo de vademécum (busca medicamento según síntomas y tipo de mascota)
-
-### Administrador
-
-* Gestión de usuarios, roles y seguridad
-* Administración de servicios y spa (alta/baja/edición)
-* Gestión de compras, proveedores e inventario
-* Facturación de ventas y productos, devoluciones incluidas
-* Creación y gestión de promociones online
-* Reportes personalizados: citas, mascotas atendidas, vacunas, usuarios, ingresos, etc. 
-
----
-
-## 🛠 Instalación y despliegue
-
-1. Clonar el repositorio
-2. Instalar dependencias (frontend/backend)
-3. Crear base de datos SQL (usuarios, mascotas, citas, servicios, facturación, inventario, etc.)
-4. Configurar variables de entorno para conexión BD y autenticación
-5. Ejecutar migraciones y seeders para datos iniciales
-6. Levantar backend y frontend (servidor local o contenedor Docker)
-7. Acceder en el navegador e iniciar sesión con rol administrador
-
----
-
-## 🔧 Ejemplo de rutas (API REST)
-
-| Endpoint             | Método              | Rol requerido         | Descripción                                  |
-| -------------------- | ------------------- | --------------------- | -------------------------------------------- |
-| `/api/auth/register` | POST                | —                     | Registro de usuario                          |
-| `/api/auth/login`    | POST                | —                     | Inicio de sesión                             |
-| `/api/mascotas`      | GET/POST/PUT/DELETE | Cliente / Admin       | CRUD mascotas                                |
-| `/api/citas`         | GET/POST/DELETE     | Cliente / Doc / Admin | Gestión de citas                             |
-| `/api/historial`     | GET/POST            | Doc / Cliente         | Histórico clínico                            |
-| `/api/vademecum`     | GET                 | Doc                   | Búsqueda de medicamentos por síntoma/especie |
-| `/api/productos`     | CRUD                | Admin                 | Gestión de productos/inventario              |
-| `/api/facturacion`   | GET/POST            | Admin / Cliente       | Venta, devolución, consulta facturas         |
-| `/api/reportes/*`    | GET                 | Admin / Doc           | Datos estadísticos, vacunas, ventas          |
-
-
----
-
-## 🎯 Buenas prácticas y recomendaciones
-
-* Usa **metodología ágil** (como XP o Scrum) para iterar según feedback del cliente/usuario
-* Aplica **control estrictos de roles y permisos** para proteger datos sensibles
-* Implementa **pruebas de usabilidad e interfaz** y encuestas de satisfacción durante las fases de desarrollo 
-* Considera añadir **facturación electrónica** si el proyecto está en Colombia u otra región donde sea obligatoria 
-
----
-
-## 📝 Licencia
-
-* Bajo la licencia Paola Garcia
----
-
-
-
+- Backend con API REST y base de datos MySQL.
+- Autenticación real con contraseñas cifradas y tokens.
+- Módulos de inventario, facturación y reportes.
